@@ -50,7 +50,7 @@ class SoftmaxWithLoss:
         검증: 모든 logits가 0이면 확률이 모두 1/10이므로 손실은 ln(10) = 2.3026 이 됩니다.
         """
         # TODO: 위 1~4 순서대로 구현하세요.
-        (batch_size, num_classess) = logits.shape
+        (batch_size, _) = logits.shape
         # 1. 각 행에서 그 행의 최댓값을 뺌
         row_sum = logits.max(axis=1, keepdims=True)
         temp1 = logits - row_sum
