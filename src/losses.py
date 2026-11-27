@@ -52,11 +52,11 @@ class SoftmaxWithLoss:
         # TODO: 위 1~4 순서대로 구현하세요.
         (batch_size, _) = logits.shape
         # 1. 각 행에서 그 행의 최댓값을 뺌
-        row_sum = logits.max(axis=1, keepdims=True)
+        row_sum = np.max(logits, axis=1, keepdims=True)
         temp1 = logits - row_sum
         # 2. exp를 취하고 행 방향 합으로 나눠 확률을 만듦
         temp2 = np.exp(temp1)
-        row_sum = temp2.sum(axis=1, keepdims=True)
+        row_sum = np.sum(temp2, axis=1, keepdims=True)
         temp2 /= row_sum
         # 3. 확률과 정답을 인스턴스 변수에 저장
         self.y_prob = temp2
