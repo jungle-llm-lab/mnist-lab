@@ -6,3 +6,4 @@ data/mnist.npz
 data/*.part
 .DS_Store
 .venv/
+.personal/
