@@ -69,11 +69,13 @@ class Affine:
             dW.shape == W.shape, db.shape == b.shape, dx.shape == x.shape
         """
         # TODO 1: self.dW를 계산하세요. forward에서 저장한 x와 dout을 사용합니다.
+        self.dW = self.x.T @ dout
         # TODO 2: self.db를 계산하세요. bias는 batch의 모든 샘플에 더해졌으므로
         #         gradient는 batch 방향으로 합쳐야 합니다.
+        self.db = np.sum(dout, axis=0)
         # TODO 3: dx를 계산해 반환하세요.
-        raise NotImplementedError("Affine.backward를 구현하세요.")
-
+        dx = dout @ self.W.T
+        return dx
 
 class BatchNorm:
     """
